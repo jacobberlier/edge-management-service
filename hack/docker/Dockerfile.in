@@ -1,0 +1,8 @@
+FROM ARG_FROM
+
+MAINTAINER Joel Markham <joel.markham@ge.com>
+
+ADD bin/ARG_ARCH/ARG_NAME /ARG_NAME
+
+USER nobody:nobody
+ENTRYPOINT ["/ARG_NAME"]

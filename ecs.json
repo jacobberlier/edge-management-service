@@ -1,0 +1,40 @@
+{
+    "listen_address": ":9001",
+    "dbus_port":"2222",
+    "data_volume": "/mnt/data",
+    "read_timeout": 30,
+    "write_timeout:": 30,
+    "useTLS":false,
+    "remote_management": false,
+    "unix_socket_path":"/var/run/ems/ems.sock",
+    "cert_path":"",
+    "key_path":"",
+    "ntp_config_location":"/mnt/conf/root-overlay/etc/systemd/timesyncd.conf",
+    "environment_file_location":"/mnt/conf/root-overlay/etc/environment",
+    "docker_proxy_config_location":"/mnt/conf/root-overlay/etc/systemd/system/docker.service.d/http-proxy.conf",
+    "allow_reboot":true,
+    "hosts_file_path":"/mnt/data/hosts",
+    "ssh_auth_keys_file":"/home/sshuser/.ssh/authorized_keys",
+    "ssh_uid":1001,
+    "ssh_gid":1001,
+    "ssh_port":"22",
+    "ssh_service_name":"dropbear.socket",
+    "network":{
+        "default_subnet_mask":24
+    },
+    "container_management_conf":{
+        "use_unix_socket":true,
+        "unix_socket_location":"/var/run/cappsd/cappsd.sock"
+    },
+    "edge_agent_conf":{
+        "use_unix_socket":true,
+        "unix_socket_location":"/var/run/edge-core.sock",
+        "enrollment_endpoint":"/api/v1/host/enroll",
+        "ip":"localhost",
+        "port":"5000",
+        "protocol":"http"
+    },
+    "edgeOS":{
+        "update_file_location":"/mnt/data/edgeos-data/swupdate-status"
+    }
+}
