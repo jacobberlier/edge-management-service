@@ -107,7 +107,12 @@ func (cappsd *Cappsd) Proxy(w http.ResponseWriter, r *http.Request) {
 		log.Infof("New request detected: Routing Path: %v", r.URL.Path)
 		parts := strings.Split(r.URL.Path, "/")
 		parts = removeEmptyStrings(parts)
+		log.Info(parts)
 		switch len(parts) {
+		case 2:
+			// createKey, hasKey, or getKey
+			containerID = ""
+			command = parts[1]
 		case 3:
 			// list
 			containerID = ""
@@ -169,6 +174,12 @@ func formReq(containerID string, command string, request *http.Request) (*http.R
 	case "deploy", "instances":
 		// /deploy
 		path = "/application/deploy"
+	case "createKey":
+		path = "/provision/createKey"
+	case "hasKey":
+		path = "/provision/hasKey"
+	case "getKey":
+		path = "/provision/getKey"
 	default:
 		//unrecognized command, return error.
 		return nil, errors.New("unrecognized command, Invalid url")

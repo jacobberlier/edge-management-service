@@ -48,6 +48,10 @@ func createRouter(cfg config.Config) *mux.Router {
 	router.HandleFunc("/application/stop/{id}", cappsd.Proxy).Methods("POST")
 	router.HandleFunc("/application/purge/{id}", cappsd.Proxy).Methods("POST")
 	router.HandleFunc("/application/kill/{id}", cappsd.Proxy).Methods("POST")
+	router.HandleFunc("/provision/createKey", cappsd.Proxy).Methods("POST")
+	router.HandleFunc("/provision/hasKey", cappsd.Proxy).Methods("GET")
+	router.HandleFunc("/provision/getKey", cappsd.Proxy).Methods("GET")
+
 
 	//cappsd endpoints, new format, still just a proxy to unix socket
 	router.HandleFunc("/api/v1/containers", cappsd.Proxy).Methods("GET")

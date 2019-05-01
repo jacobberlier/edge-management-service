@@ -1,0 +1,13 @@
+# build artifacts
+*.o
+*.a
+*.so
+/bin
+/.go
+/.dockerfile-*
+/.builder-*
+/.image-*
+/.qa-*
+
+# Mac
+.DS_Store
